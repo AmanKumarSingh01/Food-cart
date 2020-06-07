@@ -1,0 +1,136 @@
+import React, { Component } from 'react'
+import NavbarComponent from '../components/NavbarComponent'
+import data from './../asserts/sample.json'
+export default class Setuppage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: this.props.location.state,
+            selectMenu: ' ',
+            form : ''
+        }
+    }
+    goback = () => {
+        this.props.history.push('/')
+    }
+    onChangegetValue = (value) => {
+        console.log(value)
+        this.setState({selectMenu : ''})
+        if (value.auth_modes) {
+            if (value.auth_modes.length > 1) {
+                const selectMenu = 
+                    <label>
+                        Authorization mode : 
+                         <select>
+                        <option selected={true} disabled="disabled">select</option>
+                        {value.auth_modes.map((item, key) => {
+                            return (
+                                <option
+                                    key ={key}
+                                    value={item.auth_mode_type}
+                                    onClick = { () => this.clickFrom(item)}
+                                >
+                                    {item.auth_mode_type}
+                                </option>
+                            )
+                        })}
+                    </select>
+                     </label>
+                this.setState({selectMenu})
+            } else {
+                this.displaySingle(value)
+            }
+        } 
+    }
+
+
+    displaySingle = (val) => {
+        const form = 
+            <form>
+                {val.auth_modes[0].credentials.map((item, key) => {
+                    return (
+                        <div key = {key}>
+                            <label>
+                            <span>{item.label}</span>
+                            <input
+                                {...item.safe === true ? {type : "text"} : {type : "password"} }
+                                name = {item.name}
+                                onChange ={this.onChangegeValue}
+                            />
+                            </label>
+                        </div>
+                        
+                    )
+                })}
+                <input type = "submit"/>
+            </form>
+        this.setState({form})
+    }
+
+    onChangegeValue = (event) => {
+        this.setState({ [event.target.id]: event.target.value });
+    }
+    
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state);
+    }
+
+    clickFrom = (val) => {
+        const form = 
+            <form onSubmit ={this.handleSubmit}>
+                {val.credentials.map((item, key) => {
+                    return (
+                        <div key = {key}>
+                            <label>
+                            <span>{item.label}</span>
+                            <input
+                                {...item.safe === true ? {type : "text"} : {type : "password"} }
+                                name = {item.name}
+                                value ={this.state.name}
+                            />
+                            </label>
+                        </div>
+                        
+                    )
+                })}
+                <input type = "submit" title ="save"/>
+            </form>
+        this.setState({form})
+    }
+    
+    render() { 
+        return (
+            <div>
+                <NavbarComponent />
+                <div className ="container">
+                    {this.state.data === undefined ? this.goback() : <h2>{this.state.data.cartName}</h2>}
+                    <span>To begin accepting payments, we need to set up your payment gateway. Select your payment gateway from the drop down menu below. Each gateway has it's own variation on what you need to enter to go live but it's usually two or three different fields. If you're not sure where to find this information it's usually in the account manager area of your payment gateway."</span>
+                    <br/>
+                    <br/>
+                    
+                    <select
+                        ref = {this.dropdownRef}
+                    >
+                        <option selected={true} disabled="disabled" value =" " >select</option>
+                        {data.gateways.map((key, item) => {
+                            return (
+                                <option
+                                    key = {key.gateway_type}
+                                    value={key.name}
+                                    onClick ={ () => this.onChangegetValue(key)}
+                                >{key.name}
+                                </option>
+                            )
+                        })}
+                    </select>
+                    <br/>
+                    <br/>
+                    {this.state.selectMenu}
+                    {this.state.form}
+
+                </div>
+            </div>
+        )
+    }
+}

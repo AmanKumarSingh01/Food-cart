@@ -1,0 +1,165 @@
+{
+  "username":"charan",
+  "Merchant Name": "Cubelab Solutions",
+  "gateways": [
+    {
+      "gateway_type": "braintree",
+      "name": "Braintree",
+      "auth_modes": [
+        {
+          "auth_mode_type": "orange",
+          "name": "Orange",
+          "credentials": [
+            {
+              "name": "login",
+              "label": "Login",
+              "safe": true,
+              "value":""
+            },
+            {
+              "name": "password",
+              "label": "Password",
+              "safe": false,
+              "value":""
+            }
+          ]
+        },
+        {
+          "auth_mode_type": "blue",
+          "name": "Blue",
+          "credentials": [
+            {
+              "name": "merchant_account_id",
+              "label": "Merchant Account ID",
+              "safe": true,
+              "value":""
+            },
+            {
+              "name": "merchant_id",
+              "label": "Merchant ID",
+              "safe": true,
+              "value":""
+            },
+            {
+              "name": "public_key",
+              "label": "Public Key",
+              "safe": true,
+              "value":""
+            },
+            {
+              "name": "private_key",
+              "label": "Private Key",
+              "safe": false,
+              "value":""
+            }
+          ]
+        }
+      ],
+      "homepage": "http://www.braintreepaymentsolutions.com/",
+      "display_api_url": null,
+      "company_name": "Braintree"
+    },
+    {
+      "gateway_type": "ogone",
+      "name": "Ingenico ePayments (formerly Ogone)",
+      "auth_modes": [
+        {
+          "auth_mode_type": "default",
+          "name": "Default",
+          "credentials": [
+            {
+              "name": "pspid",
+              "label": "Pspid",
+              "safe": true,
+              "value":""
+            },
+            {
+              "name": "signature_strength",
+              "label": "Signature Strength",
+              "safe": true,
+              "value":""
+            },
+            {
+              "name": "userid",
+              "label": "Userid",
+              "safe": true,
+              "value":""
+            },
+            {
+              "name": "password",
+              "label": "Password",
+              "safe": false,
+              "value":""
+            },
+            {
+              "name": "signature",
+              "label": "Signature",
+              "safe": false,
+              "value":""
+            }
+          ]
+        },
+        {
+          "auth_mode_type": "no_signature",
+          "name": "No signature",
+          "credentials": [
+            {
+              "name": "pspid",
+              "label": "Pspid",
+              "safe": true,
+              "value":""
+            },
+            {
+              "name": "userid",
+              "label": "Userid",
+              "safe": true,
+              "value":""
+            },
+            {
+              "name": "password",
+              "label": "Password",
+              "safe": false,
+              "value":""
+            }
+          ]
+        }
+      ],
+      "homepage": "http://www.ogone.com/",
+      "display_api_url": "https://secure.ogone.com/ncol/prod/",
+      "company_name": "Ingenico ePayments (formerly Ogone)"
+    },
+    {
+      "gateway_type": "adyen",
+      "name": "Adyen",
+      "auth_modes": [
+        {
+          "auth_mode_type": "default",
+          "name": "Default",
+          "credentials": [
+            {
+              "name": "merchant_account",
+              "label": "Merchant Account",
+              "safe": true,
+              "value":""
+            },
+            {
+              "name": "username",
+              "label": "Username",
+              "safe": true,
+              "value":""
+            },
+            {
+              "name": "password",
+              "label": "Password",
+              "safe": false,
+              "value":""
+            }
+          ]
+        }
+      ],
+      "homepage": "https://www.adyen.com/",
+      "display_api_url": "https://pal-live.adyen.com/pal/servlet",
+      "company_name": "Adyen"
+    }
+  ]
+}
